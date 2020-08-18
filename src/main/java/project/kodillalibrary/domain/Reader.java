@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Getter
 @AllArgsConstructor
@@ -20,12 +21,12 @@ public class Reader {
     @GeneratedValue
     private Long id;
 
-    @Column(name = "FIRSTNAME")
+    @Column(name = "FIRST_NAME")
     private String firstName;
 
-    @Column(name = "LASTNAME")
+    @Column(name = "LAST_NAME")
     private String lastName;
 
     @Column(name = "REGISTRATION_DATE")
-    private LocalDate registrationDate;
+    private Date registrationDate;
 }

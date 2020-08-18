@@ -1,7 +1,6 @@
 package project.kodillalibrary.domain;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity(name = "BOOKS")
 public class Book {
@@ -11,8 +10,8 @@ public class Book {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "TITLE")
-    private Title titleList ;
+    @JoinColumn (name = "TITLE_ID")
+    private Title title;
 
     @Column(name = "STATUS")
     private String status;
