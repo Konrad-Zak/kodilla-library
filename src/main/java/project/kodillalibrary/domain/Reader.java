@@ -28,5 +28,5 @@ public class Reader {
     private String lastName;
 
     @Column(name = "REGISTRATION_DATE")
-    private Date registrationDate;
+    private LocalDate registrationDate;
 }
