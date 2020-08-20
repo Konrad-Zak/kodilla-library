@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -27,8 +28,8 @@ public class Rent {
     private Reader reader;
 
     @Column(name = "DATE_OF_RENT")
-    private Date rent;
+    private LocalDate rent;
 
     @Column(name = "DATE_OF_RETURN")
-    private Date deliver;
+    private LocalDate deliver;
 }

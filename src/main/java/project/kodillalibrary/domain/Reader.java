@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Getter
 @AllArgsConstructor
@@ -28,5 +27,6 @@ public class Reader {
     private String lastName;
 
     @Column(name = "REGISTRATION_DATE")
-    private Date registrationDate;
+    private LocalDate registrationDate;
+
 }
