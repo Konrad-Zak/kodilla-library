@@ -8,4 +8,7 @@ public interface BookRepository extends CrudRepository<Book, Long> {
     @Override
     Book save(Book book);
 
+
+    Integer countByStatusEqualsAndTitleTitleIsContaining(String status, String title);
+
 }

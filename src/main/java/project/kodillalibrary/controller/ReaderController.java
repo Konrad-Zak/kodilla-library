@@ -14,10 +14,10 @@ import project.kodillalibrary.service.ReaderDbService;
 public class ReaderController {
 
     @Autowired
-    ReaderMapper readerMapper;
+    private ReaderMapper readerMapper;
 
     @Autowired
-    ReaderDbService readerDbService;
+    private ReaderDbService readerDbService;
 
     @RequestMapping(method = RequestMethod.POST, value = "/readers", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ReaderDto createReader(@RequestBody ReaderDto readerDto){
