@@ -1,7 +1,14 @@
 package project.kodillalibrary.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity(name = "BOOKS")
 public class Book {
 

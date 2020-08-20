@@ -9,6 +9,6 @@ public interface BookRepository extends CrudRepository<Book, Long> {
     Book save(Book book);
 
 
-    Integer countByStatusEqualsAndTitleTitleIsContaining(String status, String title);
+    Integer countByStatusEqualsAndTitle_TitleEquals(String status, String title);
 
 }
