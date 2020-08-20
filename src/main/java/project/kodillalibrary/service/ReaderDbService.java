@@ -10,7 +10,7 @@ import project.kodillalibrary.repository.ReaderRepository;
 public class ReaderDbService {
 
     @Autowired
-    ReaderRepository readerRepository;
+    private ReaderRepository readerRepository;
 
     public Reader saveReader(final Reader reader){
         return readerRepository.save(reader);

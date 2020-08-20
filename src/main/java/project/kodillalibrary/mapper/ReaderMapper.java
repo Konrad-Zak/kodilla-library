@@ -10,15 +10,12 @@ import java.time.LocalDate;
 public class ReaderMapper {
 
     public Reader mapToReader(final ReaderDto readerDto){
-
-        if(readerDto.getRegistrationDate() == null){
+        if(readerDto.getRegistrationDate() == null || readerDto.getRegistrationDate().isAfter(LocalDate.now())){
             readerDto.setRegistrationDate(LocalDate.now());
         }
-
         return new Reader(
                 readerDto.getId(),readerDto.getFirstName(),readerDto.getLastName(),readerDto.getRegistrationDate()
         );
-
     }
 
     public ReaderDto mapToReaderDto(final Reader reader){
