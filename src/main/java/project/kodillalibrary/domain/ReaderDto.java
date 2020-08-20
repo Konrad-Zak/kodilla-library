@@ -13,4 +13,8 @@ public class ReaderDto {
     private String firstName;
     private String lastName;
     private LocalDate registrationDate;
+
+    public void setRegistrationDate(LocalDate registrationDate) {
+        this.registrationDate = registrationDate;
+    }
 }

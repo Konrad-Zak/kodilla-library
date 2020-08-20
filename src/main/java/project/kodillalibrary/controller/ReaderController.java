@@ -1,22 +1,27 @@
 package project.kodillalibrary.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
-import project.kodillalibrary.domain.Reader;
 import project.kodillalibrary.domain.ReaderDto;
+import project.kodillalibrary.mapper.ReaderMapper;
+import project.kodillalibrary.service.ReaderDbService;
 
-import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/v1")
 @CrossOrigin(origins = "*")
 public class ReaderController {
 
+    @Autowired
+    ReaderMapper readerMapper;
+
+    @Autowired
+    ReaderDbService readerDbService;
+
     @RequestMapping(method = RequestMethod.POST, value = "/readers", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ReaderDto createReader(@RequestBody ReaderDto readerDto){
-        return new ReaderDto(1L,"Adam","N",LocalDate.of(1991,10,20));
-
+        return readerMapper.mapToReaderDto(readerDbService.saveReader(readerMapper.mapToReader(readerDto)));
     }
-
 
 }
