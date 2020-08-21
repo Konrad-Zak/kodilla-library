@@ -3,7 +3,9 @@ package project.kodillalibrary.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.kodillalibrary.domain.Book;
+import project.kodillalibrary.domain.BookDto;
 import project.kodillalibrary.domain.Status;
+import project.kodillalibrary.mapper.BookMapper;
 import project.kodillalibrary.repository.BookRepository;
 
 import java.util.Optional;
@@ -22,6 +24,16 @@ public class BookDbService {
 
     public Optional<Book> getBook(final Long id){
         return bookRepository.findById(id);
+    }
+    
+    public void changeBookStatus(final Book book){
+        Status status;
+        if(book.getStatus() == Status.AVAILABLE){
+            status = Status.INACCESSIBLE;
+        } else {
+            status = Status.AVAILABLE;
+        }
+        saveBook(new Book(book.getId(),book.getTitle(),status));
     }
 
     public Integer numberOfBooksAvailable(String title){

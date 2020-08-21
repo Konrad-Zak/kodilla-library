@@ -13,12 +13,6 @@ public class RentMapper {
     private final static int DURATION_OF_RENT = 7;
 
     public Rent mapToRent(final RentDto rentDto){
-        if(rentDto.getRent() == null || rentDto.getRent().isBefore(DATE)){
-            rentDto.setRent(LocalDate.now());
-        }
-        if(rentDto.getDeliver() == null || rentDto.getDeliver().isBefore(DATE.plusDays(DURATION_OF_RENT))){
-            rentDto.setDeliver(DATE.plusDays(DURATION_OF_RENT));
-        }
         return new Rent(
                 rentDto.getId(),rentDto.getBook(),rentDto.getReader(),rentDto.getRent(),rentDto.getDeliver()
         );
