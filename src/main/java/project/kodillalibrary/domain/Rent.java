@@ -19,11 +19,11 @@ public class Rent {
     @GeneratedValue
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name = "BOOK_ID")
     private Book book;
 
-    @OneToOne(cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.PERSIST ,fetch = FetchType.EAGER)
     @JoinColumn(name = "READER_ID")
     private Reader reader;
 
