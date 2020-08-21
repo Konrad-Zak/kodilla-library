@@ -8,5 +8,14 @@ import lombok.Getter;
 public class BookDto {
     private Long id;
     private Title title;
-    private String status;
+    private Status status;
+
+    public BookDto(Title title, Status status) {
+        this.title = title;
+        this.status = status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 }

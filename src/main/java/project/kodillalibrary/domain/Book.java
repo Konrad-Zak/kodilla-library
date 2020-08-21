@@ -20,6 +20,7 @@ public class Book {
     @JoinColumn (name = "TITLE_ID")
     private Title title;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "STATUS")
-    private String status;
+    private Status status;
 }
