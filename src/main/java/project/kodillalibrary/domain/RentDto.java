@@ -21,11 +21,4 @@ public class RentDto {
         this.deliver = deliver;
     }
 
-    public void setRent(LocalDate rent) {
-        this.rent = rent;
-    }
-
-    public void setDeliver(LocalDate deliver) {
-        this.deliver = deliver;
-    }
 }

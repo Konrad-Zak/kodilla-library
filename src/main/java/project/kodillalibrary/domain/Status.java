@@ -1,5 +1,5 @@
 package project.kodillalibrary.domain;
 
 public enum Status {
-    AVAILABLE, INACCESSIBLE
+    AVAILABLE, INACCESSIBLE, RESERVED, BLOCKED
 }

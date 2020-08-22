@@ -3,9 +3,7 @@ package project.kodillalibrary.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.kodillalibrary.domain.Book;
-import project.kodillalibrary.domain.BookDto;
 import project.kodillalibrary.domain.Status;
-import project.kodillalibrary.mapper.BookMapper;
 import project.kodillalibrary.repository.BookRepository;
 
 import java.util.Optional;
