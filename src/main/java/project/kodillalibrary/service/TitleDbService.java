@@ -6,6 +6,7 @@ import project.kodillalibrary.domain.Title;
 import project.kodillalibrary.domain.TitleDto;
 import project.kodillalibrary.repository.TitleRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,5 +26,9 @@ public class TitleDbService {
     public Boolean checkDuplicate(final TitleDto titleDto){
         return titleRepository.existsByAuthorAndTitleAndYear(
                 titleDto.getAuthor(),titleDto.getTitle(),titleDto.getYear());
+    }
+
+    public List<Title> getAllTitles(){
+        return titleRepository.findAll();
     }
 }

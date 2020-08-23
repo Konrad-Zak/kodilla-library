@@ -6,6 +6,7 @@ import project.kodillalibrary.domain.Reader;
 import project.kodillalibrary.domain.ReaderDto;
 import project.kodillalibrary.repository.ReaderRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,5 +21,9 @@ public class ReaderDbService {
 
     public Optional<Reader> getReader(Long id){
         return readerRepository.findById(id);
+    }
+
+    public List<Reader> getAllReaders(){
+        return readerRepository.findAll();
     }
 }

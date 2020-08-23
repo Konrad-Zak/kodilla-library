@@ -9,6 +9,8 @@ import project.kodillalibrary.exception.DuplicateTitleException;
 import project.kodillalibrary.mapper.TitleMapper;
 import project.kodillalibrary.service.TitleDbService;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/v1")
@@ -29,5 +31,11 @@ public class TitleController {
         } else {
             throw new DuplicateTitleException();
         }
+    }
+
+    @ResponseStatus(HttpStatus.FOUND)
+    @RequestMapping(method = RequestMethod.GET, value = "/titles")
+    public List<TitleDto> getTitles(){
+        return titleMapper.mapToTitleDtoList(titleDbService.getAllTitles());
     }
 }
