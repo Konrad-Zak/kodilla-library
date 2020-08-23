@@ -9,6 +9,7 @@ import project.kodillalibrary.mapper.ReaderMapper;
 import project.kodillalibrary.service.ReaderDbService;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @RestController
@@ -29,6 +30,12 @@ public class ReaderController {
             readerDto.setRegistrationDate(LocalDate.now());
         }
         return readerMapper.mapToReaderDto(readerDbService.saveReader(readerMapper.mapToReader(readerDto)));
+    }
+
+    @ResponseStatus(HttpStatus.FOUND)
+    @RequestMapping(method = RequestMethod.GET, value ="/readers" )
+    public List<ReaderDto> getBooks(){
+        return readerMapper.mapToReaderDtoList(readerDbService.getAllReaders());
     }
 
 }

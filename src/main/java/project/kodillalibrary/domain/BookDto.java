@@ -15,7 +15,4 @@ public class BookDto {
         this.status = status;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
-    }
 }

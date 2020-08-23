@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import project.kodillalibrary.domain.*;
 import project.kodillalibrary.facade.RentFacade;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/v1")
 @CrossOrigin(origins = "*")
@@ -24,5 +26,11 @@ public class RentController {
     @RequestMapping(method = RequestMethod.DELETE, value = "/rents/{rentId}")
     public void deleteRent(@PathVariable Long rentId){
         rentFacade.deleteRent(rentId);
+    }
+
+    @ResponseStatus(HttpStatus.FOUND)
+    @RequestMapping(method = RequestMethod.GET, value = "/rents" )
+    public List<RentDto> getRents(){
+        return rentFacade.getAllRents();
     }
 }

@@ -3,6 +3,6 @@ package project.kodillalibrary.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "not found status")
+@ResponseStatus(HttpStatus.NOT_FOUND)
 public class StatusNotFoundException extends RuntimeException {}
 

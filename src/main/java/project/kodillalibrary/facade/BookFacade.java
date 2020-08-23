@@ -13,17 +13,20 @@ import project.kodillalibrary.mapper.BookMapper;
 import project.kodillalibrary.service.BookDbService;
 import project.kodillalibrary.service.TitleDbService;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Component
 public class BookFacade {
 
     @Autowired
-    BookMapper bookMapper;
+    private BookMapper bookMapper;
 
     @Autowired
-    BookDbService bookDbService;
+    private BookDbService bookDbService;
 
     @Autowired
-    TitleDbService titleDbService;
+    private TitleDbService titleDbService;
 
     public BookDto createBook(Long Id) {
         Title title = titleDbService.getTitle(Id).orElseThrow(TitleNotFoundException::new);
@@ -44,6 +47,14 @@ public class BookFacade {
 
     public Integer getQuantityOfBooksByTitle(String title){
         return bookDbService.numberOfBooksAvailable(title);
+    }
+
+    public List<BookDto> getAllBooks(){
+        return bookMapper.mapToBookDtoList(bookDbService.getAllBooks());
+    }
+
+    public List<Status> getAllStatus(){
+        return Arrays.asList(Status.values());
     }
 
 }

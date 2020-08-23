@@ -16,7 +16,7 @@ public class Book {
     @GeneratedValue
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn (name = "TITLE_ID")
     private Title title;
 

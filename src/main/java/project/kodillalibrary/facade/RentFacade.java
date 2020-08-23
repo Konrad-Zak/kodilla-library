@@ -12,6 +12,7 @@ import project.kodillalibrary.service.ReaderDbService;
 import project.kodillalibrary.service.RentDbService;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Component
 public class RentFacade {
@@ -41,6 +42,10 @@ public class RentFacade {
         } else {
             throw new WrongSelectedBookException();
         }
+    }
+
+    public List<RentDto> getAllRents(){
+        return rentMapper.mapToRentDtoList(rentDbService.getAllRents());
     }
 
     public void deleteRent(Long Id){

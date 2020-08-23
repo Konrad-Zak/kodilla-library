@@ -6,6 +6,7 @@ import project.kodillalibrary.domain.Book;
 import project.kodillalibrary.domain.Status;
 import project.kodillalibrary.repository.BookRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -22,6 +23,10 @@ public class BookDbService {
 
     public Optional<Book> getBook(final Long id){
         return bookRepository.findById(id);
+    }
+
+    public List<Book> getAllBooks(){
+        return bookRepository.findAll();
     }
     
     public void changeBookStatus(final Book book){
