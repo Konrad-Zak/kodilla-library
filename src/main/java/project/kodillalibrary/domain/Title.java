@@ -23,6 +23,6 @@ public class Title {
     private String author;
 
     @Column(name = "YEAR")
-    private Integer year;
+    private int year;
 
 }

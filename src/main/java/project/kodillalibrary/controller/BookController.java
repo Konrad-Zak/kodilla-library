@@ -3,7 +3,6 @@ package project.kodillalibrary.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import project.kodillalibrary.domain.Book;
 import project.kodillalibrary.domain.BookDto;
 import project.kodillalibrary.domain.Status;
 import project.kodillalibrary.facade.BookFacade;
@@ -33,8 +32,8 @@ public class BookController {
 
     @ResponseStatus(HttpStatus.FOUND)
     @RequestMapping(method = RequestMethod.GET, value = "/books/{title}")
-    public Integer getQuantityOfBooksByTitle(@PathVariable String title){
-        return bookFacade.getQuantityOfBooksByTitle(title);
+    public int getQuantityOfBooksAvailableStatusByTitle(@PathVariable String title){
+        return bookFacade.getQuantityOfBooksStatusAvailableByTitle(title);
     }
 
     @ResponseStatus(HttpStatus.FOUND)

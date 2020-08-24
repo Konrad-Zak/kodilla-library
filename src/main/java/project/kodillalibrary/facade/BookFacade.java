@@ -45,7 +45,7 @@ public class BookFacade {
         }
     }
 
-    public Integer getQuantityOfBooksByTitle(String title){
+    public int getQuantityOfBooksStatusAvailableByTitle(String title){
         return bookDbService.numberOfBooksAvailable(title);
     }
 
