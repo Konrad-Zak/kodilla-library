@@ -17,5 +17,5 @@ public interface BookRepository extends CrudRepository<Book, Long> {
     @Override
     List<Book> findAll();
 
-    Integer countByStatusEqualsAndTitle_TitleEquals(Status status, String title);
+    int countByStatusEqualsAndTitle_TitleEquals(Status status, String title);
 }

@@ -39,7 +39,7 @@ public class BookDbService {
         saveBook(new Book(book.getId(),book.getTitle(),status));
     }
 
-    public Integer numberOfBooksAvailable(String title){
+    public int numberOfBooksAvailable(String title){
         return bookRepository.countByStatusEqualsAndTitle_TitleEquals(STATUS,title);
     }
 }
