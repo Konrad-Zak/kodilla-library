@@ -1,6 +1,25 @@
 package project.kodillalibrary.controller;
 
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
+import static org.mockito.ArgumentMatchers.anyList;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.lang.reflect.Type;
+import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
+
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
@@ -14,17 +33,6 @@ import project.kodillalibrary.domain.Reader;
 import project.kodillalibrary.domain.ReaderDto;
 import project.kodillalibrary.mapper.ReaderMapper;
 import project.kodillalibrary.service.ReaderDbService;
-
-import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.List;
-
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.is;
-import static org.mockito.ArgumentMatchers.anyList;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(ReaderController.class)
@@ -46,8 +54,16 @@ public class ReaderControllerTest {
         ReaderDto readerDto = new ReaderDto(1L,"John","Rambo", LocalDate.now());
         ReaderDto readerDto1 = new ReaderDto("John","Rambo");
 
-        Gson gson = new Gson();
-        String jsonContent = gson.toJson(readerDto1);
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(LocalDate.class, new JsonSerializer<LocalDate>() {
+                    @Override
+                    public JsonElement serialize(LocalDate src, Type typeOfSrc, JsonSerializationContext context) {
+                        return new JsonPrimitive(src.toString());
+                    }
+                })
+                .create();
+
+        String jsonContent = gson.toJson(readerDto);
         
         when(readerMapper.mapToReader(ArgumentMatchers.any(ReaderDto.class))).thenReturn(reader);
         when(readerDbService.saveReader(reader)).thenReturn(reader);
