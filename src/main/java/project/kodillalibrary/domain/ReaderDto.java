@@ -1,13 +1,16 @@
 package project.kodillalibrary.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class ReaderDto {
     private Long id;
     private String firstName;
@@ -22,5 +25,10 @@ public class ReaderDto {
         this.firstName = firstName;
         this.lastName = lastName;
         this.registrationDate = registrationDate;
+    }
+
+    public ReaderDto(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 }
