@@ -1,6 +1,6 @@
 package project.kodillalibrary.controller;
 
-import com.google.gson.Gson;
+import com.google.gson.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
@@ -15,6 +15,7 @@ import project.kodillalibrary.domain.ReaderDto;
 import project.kodillalibrary.mapper.ReaderMapper;
 import project.kodillalibrary.service.ReaderDbService;
 
+import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
@@ -44,10 +45,16 @@ public class ReaderControllerTest {
         //Given
         Reader reader = new Reader(1L,"John","Rambo", LocalDate.now());
         ReaderDto readerDto = new ReaderDto(1L,"John","Rambo", LocalDate.now());
-        ReaderDto readerDto1 = new ReaderDto("John","Rambo");
 
-        Gson gson = new Gson();
-        String jsonContent = gson.toJson(readerDto1);
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(LocalDate.class, new JsonSerializer<LocalDate>() {
+                    @Override
+                    public JsonElement serialize(LocalDate src, Type typeOfSrc, JsonSerializationContext context) {
+                        return new JsonPrimitive(src.toString());
+                    }
+                })
+                .create();
+        String jsonContent = gson.toJson(readerDto);
         
         when(readerMapper.mapToReader(ArgumentMatchers.any(ReaderDto.class))).thenReturn(reader);
         when(readerDbService.saveReader(reader)).thenReturn(reader);
