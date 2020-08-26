@@ -1,5 +1,6 @@
 package project.kodillalibrary.service;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.kodillalibrary.domain.Book;
@@ -10,11 +11,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class BookDbService {
 
     private final static Status STATUS = Status.AVAILABLE;
-
-    @Autowired
     private BookRepository bookRepository;
 
     public Book saveBook(final Book book){
