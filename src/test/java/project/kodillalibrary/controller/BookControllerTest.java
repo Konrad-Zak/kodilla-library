@@ -58,7 +58,7 @@ public class BookControllerTest {
         //Given
         BookDto bookDto = new BookDto(
                 1L,new Title(1L,"Test","Daniel",2000), Status.RESERVED);
-        when(bookFacade.updateBook(1L,"RESERVED")).thenReturn(bookDto);
+        when(bookFacade.updateBook(1L,Status.RESERVED)).thenReturn(bookDto);
 
         //When & Then
         mockMvc.perform(put("/v1/books/1/RESERVED")
@@ -120,7 +120,7 @@ public class BookControllerTest {
 
         //When & Then
         String statusResponse = "[\"AVAILABLE\",\"INACCESSIBLE\",\"RESERVED\",\"BLOCKED\"]";
-        mockMvc.perform(get("/v1/status")
+        mockMvc.perform(get("/v1/books/status")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isFound())
                 .andExpect(content().string(statusResponse));

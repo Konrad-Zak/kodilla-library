@@ -65,7 +65,7 @@ public class TitleDbServiceTest {
         TitleDto titleToCheck = new TitleDto("Test", "Daniel", 1990);
         titleRepository.save(titleMapper.mapToTitle(titleDto));
         //When
-        Boolean result = titleDbService.checkDuplicate(titleToCheck);
+        Boolean result = titleDbService.checkDuplicate(titleMapper.mapToTitle(titleToCheck));
         //Then
         assertTrue(result);
         //CleanUp
